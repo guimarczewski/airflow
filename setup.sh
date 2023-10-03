@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 up() {
 
-  echo "Starting dbeaver..."
-  cd dbeaver
-  docker-compose down -v
+  echo "Starting postgres..."
+  cd postgres
   docker-compose up -d
   cd ..
 
-  echo "Starting postgres..."
-  cd postgres
-  docker-compose down -v
+  echo "Starting dbeaver..."
+  cd dbeaver
+  cd docker-cloudbeaver
   docker-compose up -d
+  cd ..
   cd ..
 
   echo "Starting Airflow..."
   cd airflow-astronomer
-  astro dev stop
   astro dev start
   cd ..
  
@@ -29,11 +28,11 @@ up() {
 
 config() {
 
-  curl -sSL install.astronomer.io | sudo bash -s
+  #curl -sSL install.astronomer.io | sudo bash -s
 
   docker network create pipeline
   docker network connect pipeline cloudbeaver
-  docker network connect pipeline postgres-postgres-1  
+  docker network connect pipeline postgres-postgres-1
   docker network connect pipeline airflow-astronomer_bc4b7f-webserver-1
   docker network connect pipeline airflow-astronomer_bc4b7f-triggerer-1
   docker network connect pipeline airflow-astronomer_bc4b7f-postgres-1
@@ -47,10 +46,14 @@ down() {
   cd airflow-astronomer
   astro dev stop
   cd ..
+
   echo "Stopping dbeaver..."
   cd dbeaver
+  cd docker-cloudbeaver
   docker-compose down
   cd ..
+  cd ..
+
   echo "Stopping postgres..."
   cd postgres
   docker-compose down

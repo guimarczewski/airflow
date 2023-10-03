@@ -26,3 +26,5 @@ airflow-astronomer_bc4b7f-postgres-1
 docker network create pipeline
 docker network connect pipeline postgres-postgres-1
 docker network inspect pipeline
+
+Criar o script de execução - script linux para subir containers automaticamente - setup.sh - comando "chmod 777 setup.sh" para transformar o arquivo em executável

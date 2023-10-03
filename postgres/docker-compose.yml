@@ -7,6 +7,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "Postgres2022!"
-      host: "postgres-postgres-1"
+      host: postgres-postgres-1
     ports:
       - "5433:5433"
