@@ -5,6 +5,8 @@ services:
       - ./01-basegeografica.sql:/docker-entrypoint-initdb.d/01-basegeografica.sql
       - ./02-basegeografica.sql:/docker-entrypoint-initdb.d/02-basegeografica.sql
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "Postgres2022!"
+      host: "postgres-postgres-1"
     ports:
       - "5433:5433"
