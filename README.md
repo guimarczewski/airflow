@@ -24,5 +24,5 @@ airflow-astronomer_bc4b7f-triggerer-1
 airflow-astronomer_bc4b7f-postgres-1
 
 docker network create pipeline
-docker network connect pipeline airflow-astronomer_bc4b7f-postgres-1
+docker network connect pipeline postgres-postgres-1
 docker network inspect pipeline
