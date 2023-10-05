@@ -1,4 +1,4 @@
-from airflow import dag
+from airflow.decorators import dag
 from datetime import datetime
 # operador da task utilizando python, cada ,engine tem um
 from airflow.operators.python import PythonOperator, BranchPythonOperator
